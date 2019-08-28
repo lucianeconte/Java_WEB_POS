@@ -66,8 +66,13 @@ public class CandidatoController {
 
 	@GetMapping("/deletar/{codigo}")
 	public String deletar(@PathVariable("codigo") Integer codigo) {
-		candidatoService.excluir(new Candidato(codigo));
-		return "redirect:/candidato/listar";
+		System.out.println("AQUI");
+
+			candidatoService.excluir(new Candidato(codigo));
+			return "redirect:/candidato/listar";
+
+			//System.out.println("O Candidato não pode ser apagado pois possui vínculos");
+		
 	}
 
 	@GetMapping("/visualizar/{codigo}")

@@ -18,4 +18,7 @@ public interface EleitorRepository extends JpaRepository<Eleitor, Long> {
 	@Query("select s from Eleitor s where s.secao = :secao")
 	List<Eleitor> porSecao(@Param("secao") Short secao);
 	
+	@Query("select p from Eleitor p where p.numeroTitulo = :numeroTitulo")
+	List<Eleitor> porNumeroTitulo(@Param("numeroTitulo") Long numeroTitulo);
+	
 }

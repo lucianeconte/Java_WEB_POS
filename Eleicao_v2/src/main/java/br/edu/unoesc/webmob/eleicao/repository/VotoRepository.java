@@ -14,4 +14,7 @@ public interface VotoRepository extends JpaRepository<Voto, Long> {
 	
 	@Query("select count(v) from Voto v where v.candidato = :candidato")
 	List<Voto> porCandidato(@Param("candidato") Integer candidato);
+	
+	@Query("select v from Voto v inner join fetch v.eleitor")
+	List<Voto> dadosGrid();
 }

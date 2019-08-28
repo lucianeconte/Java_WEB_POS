@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Classe que representa os votos
  * 
@@ -21,6 +23,7 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Voto {
 	// atributos
 	@Id
@@ -37,6 +40,10 @@ public class Voto {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "numeroTitulo")
 	private Eleitor eleitor;
+	
+	public Voto(){
+		
+	}
 
 	/**
 	 * @return the codigo

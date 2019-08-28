@@ -18,7 +18,7 @@ public class IndexController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<String> nomes = new ArrayList<String>();
-		nomes.add("Nome 1");
+		nomes.add("Maria");
 		nomes.add("Nome 2");
 		nomes.add("Nome 3");
 
