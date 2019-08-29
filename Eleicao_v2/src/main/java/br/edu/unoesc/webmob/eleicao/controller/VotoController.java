@@ -1,6 +1,5 @@
 package br.edu.unoesc.webmob.eleicao.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -27,10 +26,10 @@ public class VotoController {
 	@Autowired
 	private VotoService votoService;
 	
-	//@Autowired
+	@Autowired
 	private CandidatoService candidatoService;
 
-	//@Autowired
+	@Autowired
 	private EleitorService eleitorService;
 
 	@PostMapping("/salvar")
@@ -39,50 +38,22 @@ public class VotoController {
 			return "voto/novo";
 		}
 		votoService.salvar(voto);
-		return "redirect:/voto/listar";
-	}
-
-	@PostMapping("/alterar")
-	public String alterar(@Valid Voto voto, BindingResult erros) {
-		if (erros.hasErrors()) {
-			return "voto/visualizar";
-
-		}
-		votoService.salvar(voto);
-		return "redirect:/voto/listar";
+		return "voto/votoFinalizado";
 	}
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
-		model.addAttribute("votos", votoService.dadosGrid());
+		model.addAttribute("votos", votoService.listarPorCandidato(1));
 		// caminho + nome do JSP que será renderizado para a tela
 		System.out.println("************!!!!!!!!!!!!!");
-		return "voto/lista";
+		return "voto/listarPorCandidato";
 	}
 
 	@GetMapping("/novo")
 	public String novo(Model model) {
-		//model.addAttribute("candidatos", candidatoService.listar());
-		//model.addAttribute("eleitores", eleitorService.listar());
-		//model.addAttribute("cargos", Arrays.asList(Cargo.values()));
-		System.out.println("AAAAAAAAA");
-		return "voto/novo";
-	}
-
-	/*@GetMapping("/deletar/{codigo}")
-	public String deletar(@PathVariable("codigo") Integer codigo) {
-
-			votoService.excluir(new Voto(codigo));
-			return "redirect:/voto/listar";
-		
-	}*/
-
-	@GetMapping("/visualizar/{codigo}")
-	public String visualizar(@PathVariable("codigo") Integer codigo, Model model) {
-		model.addAttribute("candidato", candidatoService.buscarPorCodigo(codigo));
+		model.addAttribute("candidatos", candidatoService.listar());
 		model.addAttribute("eleitores", eleitorService.listar());
-		//model.addAttribute("cargos", Arrays.asList(Cargo.values()));
-		return "voto/visualizar";
+		return "voto/novo";
 	}
 
 	@GetMapping("/rest/urna/{urna}")

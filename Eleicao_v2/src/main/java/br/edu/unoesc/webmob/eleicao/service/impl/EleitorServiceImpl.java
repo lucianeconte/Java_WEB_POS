@@ -28,6 +28,7 @@ public class EleitorServiceImpl implements EleitorService {
 	@Override
 	public List<Eleitor> listar() {
 		return eleitorRepository.findAll();
+		
 	}
 
 	@Override

@@ -1,25 +1,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<label for="nome">Candidato: </label>
-<input type="text" name="nome" id="nome" value="${candidato.nome}">
-<form:errors path="candidato.nome" />
+<label for="data">Data: </label>
+<input type="text" name="data" id="data" value="${voto.data}">
+<form:errors path="voto.data" />
 <br/>
-<label for="cpf">CPF: </label>
-<input type="text" name="cpf" id="cpf" value="${candidato.cpf}">
-<form:errors path="candidato.cpf" />
+<label for="urna">Urna: </label>
+<input type="text" name="urna" id="urna" value="${voto.urna}">
+<form:errors path="voto.urna" />
 <br/>
-<label for="partido">Partido</label>
-<select id="partido" name="partido.codigo">
-	<c:forEach items="${partidos}" var="partido">
+<label for="candidato">Candidato</label>
+<select id="candidato" name="candidato.codigoRegistro">
+	<c:forEach items="${candidatos}" var="candidato">
 		<c:set var="selecionado" value="" />
-		<c:if test="${partido.codigo eq candidato.partido.codigo}">
+		<c:if test="${candidato.codigoRegistro eq voto.candidato.codigoRegistro}">
 			<c:set var="selecionado" value="selected" />
 		</c:if>
-		<option value="${partido.codigo}" ${selecionado}>${partido.nome}
+		<option value="${candidato.codigoRegistro}" ${selecionado}>${candidato.nome} - ${candidato.cargo}
 	</c:forEach>
 </select>
 <br/>
-<label for="cargo">Cargo</label>
+<label for="eleitor">Eleitor</label>
+<select id="eleitor" name="eleitor.numeroTitulo">
+ <c:forEach items="${eleitores}" var="eleitor">
+		<c:set var="selecionado" value="" />
+		<c:if test="${eleitor.numeroTitulo eq voto.eleitor.numeroTitulo}">
+			<c:set var="selecionado" value="selected" />
+		</c:if>
+		<option value="${eleitor.numeroTitulo}" ${selecionado}>${eleitor.nome}
+	</c:forEach> 
+</select>
+<!--  <label for="cargo">Cargo</label>
 <select id="cargo" name="cargo">
 	<c:forEach items="${cargos}" var="cargo">
 		<c:set var="selecionado" value="" />
@@ -28,4 +38,4 @@
 		</c:if>
 		<option value="${cargo}" ${selecionado}>${cargo}
 	</c:forEach>
-</select>
+</select>-->
