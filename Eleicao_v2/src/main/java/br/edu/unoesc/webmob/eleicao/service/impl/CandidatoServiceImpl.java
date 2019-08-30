@@ -18,7 +18,7 @@ public class CandidatoServiceImpl implements CandidatoService {
 	public void salvar(Candidato candidato) {
 		candidatoRepository.save(candidato);
 	}
-
+	
 	@Override
 	public void excluir(Candidato candidato) {
 		candidatoRepository.delete(candidato);

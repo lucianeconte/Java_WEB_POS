@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import br.edu.unoesc.webmob.eleicao.model.Candidato;
 import br.edu.unoesc.webmob.eleicao.model.Voto;
 import br.edu.unoesc.webmob.eleicao.service.VotoService;
 import br.edu.unoesc.webmob.eleicao.service.CandidatoService;
@@ -59,19 +60,19 @@ public class VotoController {
 	@GetMapping("/rest/urna/{urna}")
 	@ResponseBody
 	public List<Voto> listarPorUrna(@PathVariable("urna") Long urna) {
-		System.out.println("antes listar urna");
-		//return votoService.dadosGrid();
 		return votoService.listarPorUrna(urna);
-		//System.out.println("depois listar urna");
 	}
 	
 
-	@GetMapping("/rest/codigoRegistro/{codigoRegistro}")
+	@GetMapping("/rest/codigoRegistro/{candidato}")
 	@ResponseBody
-	public List<Voto> listarPorCandidato(@PathVariable("codigoRegistro") Integer codigoRegistro) {
+	public List<Voto> listarPorCandidato(@PathVariable("candidato") Integer candidato) {
 		System.out.println("TESTE");
 		//return votoService.dadosGrid();
-		return votoService.listarPorCandidato(codigoRegistro);
+//		Candidato c = new Candidato();
+//		System.out.println(c.getCodigoRegistro());
+//		codigoRegistro = c.getCodigoRegistro();
+		return votoService.listarPorCandidato(candidato);
 	}
 
 }

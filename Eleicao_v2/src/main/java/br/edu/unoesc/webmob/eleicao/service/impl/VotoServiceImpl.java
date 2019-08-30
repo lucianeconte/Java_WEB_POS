@@ -26,8 +26,7 @@ public class VotoServiceImpl implements VotoService {
 
 	@Override
 	public List<Voto> listarPorUrna(Long urna) {
-		System.out.println("voto serv urna 1");
-		return votoRepository.findByUrnaLike(urna);
+		return votoRepository.porUrna(urna);
 	}
 
 	@Override

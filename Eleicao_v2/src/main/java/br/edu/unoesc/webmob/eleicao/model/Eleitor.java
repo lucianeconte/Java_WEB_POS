@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Classe que representa um Eleitor
  * 
@@ -11,6 +13,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Eleitor implements Validador {
 	@Id
 	private Long numeroTitulo;
