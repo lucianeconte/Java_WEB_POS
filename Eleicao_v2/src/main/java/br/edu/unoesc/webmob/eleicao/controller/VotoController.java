@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.edu.unoesc.webmob.eleicao.model.Candidato;
 import br.edu.unoesc.webmob.eleicao.model.Voto;
 import br.edu.unoesc.webmob.eleicao.service.VotoService;
 import br.edu.unoesc.webmob.eleicao.service.CandidatoService;
@@ -44,7 +43,8 @@ public class VotoController {
 
 	@GetMapping("/listar")
 	public String listar(Model model) {
-		model.addAttribute("votos", votoService.listarPorCandidato(1));
+		System.out.println("**** Total por candidato *********");
+		model.addAttribute("votos", votoService.totalPorCandidato(17));
 		// caminho + nome do JSP que será renderizado para a tela
 		System.out.println("************!!!!!!!!!!!!!");
 		return "voto/listarPorCandidato";
@@ -64,15 +64,16 @@ public class VotoController {
 	}
 	
 
-	@GetMapping("/rest/codigoRegistro/{candidato}")
+	@GetMapping("/rest/codigoRegistro/{codigoRegistro}")
 	@ResponseBody
-	public List<Voto> listarPorCandidato(@PathVariable("candidato") Integer candidato) {
-		System.out.println("TESTE");
-		//return votoService.dadosGrid();
-//		Candidato c = new Candidato();
-//		System.out.println(c.getCodigoRegistro());
-//		codigoRegistro = c.getCodigoRegistro();
-		return votoService.listarPorCandidato(candidato);
+	public List<Voto> listarPorCandidato(@PathVariable("codigoRegistro") Integer codigoRegistro) {
+		return votoService.listarPorCandidato(codigoRegistro);
+	}
+	
+	@GetMapping("/rest/totalCandidato/{codigoRegistro}")
+	@ResponseBody
+	public Integer totalPorCandidato(@PathVariable("codigoRegistro") Integer codigoRegistro) {
+		return votoService.totalPorCandidato(codigoRegistro);
 	}
 
 }

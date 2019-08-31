@@ -30,8 +30,13 @@ public class VotoServiceImpl implements VotoService {
 	}
 
 	@Override
+	public Integer totalPorCandidato(Integer codigoRegistro) {
+		return votoRepository.totalPorCandidato(codigoRegistro);
+	}
+	
+	@Override
 	public List<Voto> listarPorCandidato(Integer codigoRegistro) {
-		return votoRepository.porCandidato(codigoRegistro);
+		return votoRepository.listarPorCandidato(codigoRegistro);
 	}
 	
 	@Override
