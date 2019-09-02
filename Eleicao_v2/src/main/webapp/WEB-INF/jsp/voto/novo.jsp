@@ -10,7 +10,7 @@
 		<c:import url="_campos.jsp"></c:import>
 
 		<button type="submit">Salvar</button>
-		<a href="/voto/listar">Cancelar</a>
+		<a href="/voto/novo">Cancelar</a>
 	</form>
 </body>
 </html>

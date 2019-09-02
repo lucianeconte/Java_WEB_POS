@@ -11,7 +11,5 @@
 	<br>
 	<a href="novo">Novo Voto</a>
 	<br>
-	<br>
-	<a href="novo">Total de votos por candidato</a>
 </body>
 </html>

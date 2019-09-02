@@ -29,13 +29,3 @@
 		<option value="${eleitor.numeroTitulo}" ${selecionado}>${eleitor.nome}
 	</c:forEach> 
 </select>
-<!--  <label for="cargo">Cargo</label>
-<select id="cargo" name="cargo">
-	<c:forEach items="${cargos}" var="cargo">
-		<c:set var="selecionado" value="" />
-		<c:if test="${cargo eq candidato.cargo}">
-			<c:set var="selecionado" value="selected" />
-		</c:if>
-		<option value="${cargo}" ${selecionado}>${cargo}
-	</c:forEach>
-</select>-->

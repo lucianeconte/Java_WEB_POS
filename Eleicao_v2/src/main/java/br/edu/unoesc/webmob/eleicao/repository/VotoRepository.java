@@ -15,7 +15,7 @@ public interface VotoRepository extends JpaRepository<Voto, Long> {
 	List<Voto> porUrna(@Param("urna") Long urna);
 	
 	//@Query("select count(v) from Voto v where v.candidato = :candidato")
-	@Query("select count(v) from Voto v inner join v.candidato where v.candidato.codigoRegistro = :codigoRegistro")
+	@Query("select count(v) as total from Voto v inner join v.candidato where v.candidato.codigoRegistro = :codigoRegistro")
 	Integer totalPorCandidato(@Param("codigoRegistro") Integer codigoRegistro);
 	
 	@Query("select v from Voto v inner join fetch v.candidato where v.candidato.codigoRegistro = :codigoRegistro")

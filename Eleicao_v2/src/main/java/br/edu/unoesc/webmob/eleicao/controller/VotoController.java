@@ -40,15 +40,16 @@ public class VotoController {
 		votoService.salvar(voto);
 		return "voto/votoFinalizado";
 	}
-
-	@GetMapping("/listar")
-	public String listar(Model model) {
+	
+	@GetMapping("/listar/{codigoRegistro}")
+	public String codigoRegistro(@PathVariable Integer codigoRegistro, Model model) {
 		System.out.println("**** Total por candidato *********");
-		model.addAttribute("votos", votoService.totalPorCandidato(17));
-		// caminho + nome do JSP que será renderizado para a tela
-		System.out.println("************!!!!!!!!!!!!!");
+		int total = votoService.totalPorCandidato(codigoRegistro);
+		model.addAttribute("codigoRegistro", total);
+		System.out.println("Total = " + total);
 		return "voto/listarPorCandidato";
 	}
+
 
 	@GetMapping("/novo")
 	public String novo(Model model) {
