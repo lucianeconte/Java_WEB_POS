@@ -6,6 +6,7 @@ import br.edu.unoesc.webmob.eleicao.model.Candidato;
 
 public interface CandidatoService {
 	public void salvar(Candidato candidato);
+//	public void alterar(Candidato candidato);
 	public void excluir(Candidato candidato);
 	public List<Candidato> listar();
 	public List<Candidato> listarPorNome(String nome);

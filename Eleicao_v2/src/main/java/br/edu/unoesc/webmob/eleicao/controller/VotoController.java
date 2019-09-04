@@ -45,11 +45,16 @@ public class VotoController {
 	public String codigoRegistro(@PathVariable Integer codigoRegistro, Model model) {
 		System.out.println("**** Total por candidato *********");
 		int total = votoService.totalPorCandidato(codigoRegistro);
-		model.addAttribute("codigoRegistro", total);
+		model.addAttribute("total", total);
 		System.out.println("Total = " + total);
 		return "voto/listarPorCandidato";
 	}
 
+	@GetMapping("/listarGeral")
+	public String listar(Model model) {
+		model.addAttribute("votos", votoService.dadosGrid());
+		return "voto/lista";
+	}
 
 	@GetMapping("/novo")
 	public String novo(Model model) {

@@ -6,7 +6,7 @@
 <title>Total por candidato</title>
 </head>
 <body>
-	<h2>Quantidade total de votos = ${codigoRegistro}</h2>
+	<h2>Quantidade total de votos = ${total}</h2>
 	
 </body>
 </html>
