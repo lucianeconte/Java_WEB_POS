@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import br.edu.unoesc.webmob.eleicao.model.Voto;
+import br.edu.unoesc.webmob.eleicao.model.VotoCandidato;
 
 public interface VotoRepository extends JpaRepository<Voto, Long> {
 	public List<Voto> findByUrnaLike(Long urna);
@@ -23,4 +24,9 @@ public interface VotoRepository extends JpaRepository<Voto, Long> {
 	
 	@Query("select v from Voto v inner join fetch v.eleitor")
 	List<Voto> dadosGrid();
+	
+	@Query("SELECT new br.edu.unoesc.webmob.eleicao.model.VotoCandidato (v.candidato, COUNT(v)) "
+		  + "from Voto v GROUP BY v.candidato")
+	List<VotoCandidato> contaVotosPorCandidato();
+	
 }

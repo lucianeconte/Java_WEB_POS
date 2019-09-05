@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.unoesc.webmob.eleicao.model.Voto;
+import br.edu.unoesc.webmob.eleicao.model.VotoCandidato;
 import br.edu.unoesc.webmob.eleicao.repository.VotoRepository;
 import br.edu.unoesc.webmob.eleicao.service.VotoService;
 
@@ -44,5 +45,9 @@ public class VotoServiceImpl implements VotoService {
 		return votoRepository.dadosGrid();
 	}
 	
+	@Override
+	public List<VotoCandidato> contaVotosPorCandidato() {
+		return votoRepository.contaVotosPorCandidato();
+	}
 
 }

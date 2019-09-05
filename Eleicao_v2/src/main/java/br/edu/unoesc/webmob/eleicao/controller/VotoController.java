@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.edu.unoesc.webmob.eleicao.model.Voto;
+import br.edu.unoesc.webmob.eleicao.model.VotoCandidato;
 import br.edu.unoesc.webmob.eleicao.service.VotoService;
 import br.edu.unoesc.webmob.eleicao.service.CandidatoService;
 import br.edu.unoesc.webmob.eleicao.service.EleitorService;
@@ -55,6 +56,12 @@ public class VotoController {
 		model.addAttribute("votos", votoService.dadosGrid());
 		return "voto/lista";
 	}
+	
+	@GetMapping("/totalVotos")
+	public String totalVotos(Model model) {
+		model.addAttribute("votosCandidatos", votoService.contaVotosPorCandidato());
+		return "voto/contarVotos";
+	}
 
 	@GetMapping("/novo")
 	public String novo(Model model) {
@@ -80,6 +87,12 @@ public class VotoController {
 	@ResponseBody
 	public Integer totalPorCandidato(@PathVariable("codigoRegistro") Integer codigoRegistro) {
 		return votoService.totalPorCandidato(codigoRegistro);
+	}
+	
+	@GetMapping("/rest/totalVotos")
+	@ResponseBody
+	public List<VotoCandidato> totalVotos() {
+		return votoService.contaVotosPorCandidato();
 	}
 
 }

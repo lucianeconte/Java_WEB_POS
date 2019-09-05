@@ -11,6 +11,6 @@
 	<br>
 	<a href="novo">Novo Voto</a>
 	<br>
-	<a href="listarGeral">Total de Votos</a>
+	<a href="totalVotos">Total de Votos</a>
 </body>
 </html>
